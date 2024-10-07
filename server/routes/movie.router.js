@@ -2,12 +2,15 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
+  const movieId = req.params.id;
   const query = `
-    SELECT * FROM "movies"
-      ORDER BY "title" ASC;
+    SELECT "genres"."name", "title", "description", "poster" FROM "genres"
+    JOIN "movies_genres" on "genres"."id" = "genre_id"
+    JOIN "movies" on "movies"."id" = "movie_id"
+    WHERE "movies"."id"= $1;
   `;
-  pool.query(query)
+  pool.query(query,[movieId])
     .then(result => {
       res.send(result.rows);
     })
@@ -18,6 +21,7 @@ router.get('/', (req, res) => {
 
 });
 
+// Stretch
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
