@@ -20,7 +20,7 @@ function* fetchAllMovies() {
       payload: moviesResponse.data
     });
 
-    console.log('this is the movies response', moviesResponse);
+   // console.log('this is the movies response', moviesResponse);
   } catch (error) {
     console.log('fetchAllMovies error:', error);
   }
@@ -29,7 +29,7 @@ function* fetchAllMovies() {
 }
 
 function* fetchMovieDetails(action){
-  console.log('this is the action payload', action.payload);
+ // console.log('this is the action payload', action.payload);
   try {
 
     const detailsResponse = yield axios.get(`/api/movies/${action.payload}`);
