@@ -40,21 +40,41 @@ function Details() {
         <div>   
 
             <h1>Movie Details</h1>
-
-           {
+            
+            
+                
+                    <img src={details[0].poster}/>
+                    < br/>
+                    <button onClick={handleClick}>Go back</button>
+                    < br/>
+                    {details[0].title}
+            
+                    {details[0].description}  
+                
+            
+            Genre:
+            
+            <ul>  
+             {
             details.map((movie) => {
+
                 return (
-                    <li>
-                     {movie.name}   
-                    </li>
+                   
+                   <li key={movie.id}>
+                   {movie.name}  
+                   </li>
+               
+                    
+                
                     
                 )
             }
 
             )
-           }
-                        
-     <button onClick={handleClick}>Go back</button>
+           }             
+            </ul>
+           
+                    
     
         </div>
         
