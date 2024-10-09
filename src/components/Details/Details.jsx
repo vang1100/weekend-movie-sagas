@@ -17,22 +17,42 @@ function Details() {
         history.push('/');
     }
 
+    const {id} = useParams();
   
-    //having trouble with useeffect
+    // const {id} unpacks the object. gives us access to id.id
+    
 
     useEffect(() => {
+       console.log('what is the id inside use effect?', id);
         dispatch({
             type: 'FETCH_DETAILS',
-            payload: 2,
+            payload: id,
         })
     }, []);
      
+      //*****//
+      // 1. useEffect not displaying all details
+      // 2. How do I display the information for each id?
+      // 3. Why does it repeat?
 
     return (
         
         <div>   
 
             <h1>Movie Details</h1>
+
+           {
+            details.map((movie) => {
+                return (
+                    <li>
+                     {movie.name}   
+                    </li>
+                    
+                )
+            }
+
+            )
+           }
                         
      <button onClick={handleClick}>Go back</button>
     
